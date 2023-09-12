@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Show&nbsp;mynbsp;code</title>
+	</head>
+	<body style="background-image: url(bg.jpg);background-size: 100%">
+		<h1 style="color:white">源码展示与描述(css部分)&nbsp;Show&nbsp;my&nbsp;code</h1>
+		<br>
+		<td><a href="homework_2.html" style="text-decoration:none;color:white;border:solid 2px ghostwhite">点击此处回到上一级&nbsp;Back</a></td>
+		<p></p>
+		<textarea style="width:90%;height:800px;background-color: darkgrey;color:white;font-family: arial;">
+			body {
+				font-family: arial;
+				width:100%;
+				margin: 0;
+				padding: 0;
+				border: 0;
+			
+			}
+			
+			/*网页头部*/
+			.header {
+				height: 175px;
+				padding: 70px;
+				top: 0px;
+				position: top;
+			}
+			
+			/*main内容板块*/
+			#main {
+				background-image: url(bg.jpg);
+				/* z-index: -1; */
+				width: 100%;
+				height: 800px;
+				background-size: 120% 120%;
+			}
+			
+			/*左侧栏，预留位置作为竖向导航栏*/
+			.leftbox {
+				width: 23%;
+				height: 600px;
+				background-color: grey;
+				opacity: 0.4;
+				float: left;
+			}
+			
+			
+			/*main内容板块之一*/
+			.right_in {
+				width: 35%;
+				height: 300px;
+				background-color: #2B2929;
+				opacity: 0.5;
+				float: left;
+				z-index: -1;
+			}
+			
+			.right_in:hover {
+				width: 38.5%;
+				height: 300px;
+				background-color: #DF9A41;
+				opacity: 0.5;
+				float: left;
+				transform: scale(1.1);
+				transition: all 0.3s linear;
+			}
+			
+			/*main内容板块之一*/
+			.right_in2 {
+				width: 35%;
+				height: 300px;
+				background-color: #2B2929;
+				opacity: 0.5;
+				float: left;
+				z-index: -1;
+			}
+			
+			.right_in2:hover {
+				width: 38.5%;
+				height: 300px;
+				background-color: #971FE6;
+				opacity: 0.5;
+				float: left;
+				transform: scale(1.1);
+				transition: all 0.3s linear;
+			}
+			
+			/*main内容板块之一*/
+			.left_in {
+				width: 38.5%;
+				height: 300px;
+				background-color: #2B2929;
+				opacity: 0.6;
+				float: left;
+				z-index: -1;
+			}
+			
+			.left_in:hover {
+				width: 36%;
+				height: 300px;
+				background-color: #383FA8;
+				opacity: 0.8;
+				float: left;
+				transform: scale(1.1);
+				transition: all 0.3s linear;
+			}
+			
+			/*main内容板块之一*/
+			.left_in2 {
+				width: 38.5%;
+				height: 300px;
+				background-color: #2B2929;
+				opacity: 0.6;
+				float: left;
+				z-index: -1;
+			}
+			
+			.left_in2:hover {
+				width: 36%;
+				height: 300px;
+				background-color: #49BD45;
+				opacity: 0.8;
+				float: left;
+				transform: scale(1.1);
+				transition: all 0.3s linear;
+			}
+			
+			/*导航栏*/
+			.navbar {
+				overflow: hidden;
+				background-color: black;
+				font-size: 15px;
+				opacity: 0.8;
+			}
+			
+			.navbar a {
+				float: left;
+				display: block;
+				color: white;
+				text-align: center;
+				text-decoration: none;
+				padding: 14px 20px;
+			}
+			
+			.navbar a:hover {
+				background-color: #ddd;
+				color: black;
+			}
+			
+			/*页脚编辑*/
+			.footer {
+				width: 100%;
+				height: 50px;
+				background-color: grey;
+				padding: 10px;
+			}
+			
+			video {
+				top: -25%;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				right: 0px;
+				bottom: 0px;
+				z-index: -99;
+				margin: 0px 0px 0px 0px;
+			}
+			
+			/*响应式布局*/
+			@media screen and (max-width: 700px) {
+				.row {
+					flex-direction: column;
+				}
+			}
+			
+			@media screen and (max-width: 800px) {
+				.navbar a {
+					float: none;
+					width: 100%;
+				}
+			
+			}
+		</textarea>
+	</body>
+</html>

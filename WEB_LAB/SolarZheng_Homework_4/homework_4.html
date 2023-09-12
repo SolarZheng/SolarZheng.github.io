@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>homework_4</title>
+	</head>
+	<style>
+		* {
+			cursor: url(caocaocao.png), default;
+		}
+
+		body {
+			text-align: center;
+			background-image: url(guagua.jpg);
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+
+		button {
+			background-color: #66cc99;
+			border-radius: 20%;
+			box-shadow: 0 5px;
+		}
+
+		button:active {
+			box-shadow: 0 0px;
+		}
+	</style>
+	<body>
+		<script src="homework_4.js"></script>
+
+		<h1>~~~快乐韭菜个税计算器~~~</h1>
+		<h3>使用之前请认真阅读使用小贴士嗷┗|｀O′|┛ 否则出错概不负责~页面底部附纳税额度表可供参考~</h3>
+
+		请输入月工资:<input type="number" id="ipt" placeholder="请输入你的月工资~">
+		<!-- <button onclick="result_month(document.getElementById('ipt').value)">确定</button> -->
+		<button onclick="get_salary(document.getElementById('ipt').value)">保存</button>
+		<br><br>
+		请输入年终奖:<input type="number" id="_ipt" placeholder="请输入你的年终奖~">
+		<!-- <button onclick="result_year(document.getElementById('_ipt').value)">确定</button> -->
+		<button onclick="get_bonus(document.getElementById('_ipt').value)">保存</button>
+		<br><br>
+		<button onclick="result_month()">计算每月纳税</button>
+		<h4 id="last">
+		</h4>
+		<!-- <button onclick="alert(salary)">计算月税</button> -->
+		<button onclick="result_year()">计算年终奖纳税</button>
+		<h4 id="show">
+		</h4>
+		<!-- <button onclick="alert(bonus)">计算年税</button> -->
+		<button onclick="result_all()">计算全年所得纳税</button>
+		<h4 id="all">
+		</h4>
+		<button onclick="reload()">重置</button>
+		<p></p>
+		<h3>
+			使用小贴士~
+		</h3>
+		<h5>
+			计算每月纳税时，请填入月工资，并按下”保存“,最后点击”计算月税“~<br>
+			计算年终奖纳税与全年所得纳税时，请填入年终奖金额并按下”保存“，请确保月工资是有值的，最后点击”计算年终奖税“~<br>
+			点击重置即可清空数据~<br>
+		</h5>
+		<h5>~~~纳税参考表~~~</h5>
+		<table style="text-align:center;margin:0 auto;font-size: 15px;border: solid greenyellow;">
+			<tr style="background-color: #CCE8EB;">
+				<td>月工资</td>
+				<td>年终奖</td>
+				<td>每月纳税</td>
+				<td>一次性所得税</td>
+				<td>全年所得税</td>
+			</tr>
+			<tr style="background: #fff; ">
+				<td>3500</td>
+				<td>15000</td>
+				<td>0</td>
+				<td>4500</td>
+				<td>4500</td>
+			</tr>
+			<tr style="background: #B7C79E">
+				<td>7000</td>
+				<td>20000</td>
+				<td>245</td>
+				<td>1895</td>
+				<td>4835</td>
+			</tr>
+			<tr style="background: #fff;">
+				<td>10000</td>
+				<td>45000</td>
+				<td>745</td>
+				<td>4395</td>
+				<td>13335</td>
+			</tr>
+			<tr style="background:#B7C79E;">
+				<td>15000</td>
+				<td>70000</td>
+				<td>1870</td>
+				<td>13445</td>
+				<td>35885</td>
+			</tr>
+			<tr style="background: #fff;">
+				<td>50000</td>
+				<td>200000</td>
+				<td>11195</td>
+				<td>48995</td>
+				<td>183335</td>
+			</tr>
+			<tr style="background:#B7C79E;">
+				<td>80000</td>
+				<td>250000</td>
+				<td>21270</td>
+				<td>61495</td>
+				<td>316735</td>
+			</tr>
+			<tr style="background: #fff;">
+				<td>100000</td>
+				<td>1200000</td>
+				<td>29920</td>
+				<td>526495</td>
+				<td>885535</td>
+			</tr>
+		</table>
+	</body>
+</html>

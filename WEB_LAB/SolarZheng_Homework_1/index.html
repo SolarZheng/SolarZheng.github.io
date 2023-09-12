@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SolarZheng Homework 1</title>
+	</head>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: arial;
+			margin: 0;
+			/*外边距*/
+		}
+
+		h1 {
+			color: white;
+		}
+
+		h5 {
+			color: white;
+		}
+
+		.header {
+			padding: 60px;
+			text-align: right;
+		}
+
+		.header::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 1900px;
+			height: 1800px;
+			background-image: url(kp.jpg);
+			filter: brightness(10%);
+			filter: blur(10px);
+			z-index: -1;
+			background-size: cover;
+		}
+
+		.big {
+			transition: all 0.2s linear;
+		}
+
+
+		.big:hover {
+			transform: scale(2);
+			transition: all 0.2s linear;
+		}
+
+		.main {
+			-ms-flex: 70%;
+			flex: 70%;
+			background-color: grey;
+			padding: 20px;
+			/*padding属性可以在一个声明中设置元素所有内边距的宽度，或者设置各边上内边距的宽度。*/
+		}
+
+		.navbar {
+			overflow: hidden;
+			background-color: black;
+		}
+
+		.navbar a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			padding: 14px 20px;
+		}
+
+		.navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+
+		#sec-1,
+		#sec-2,
+		#sec-3,
+		#sec-4,
+		#sec-5 {
+			display: none;
+		}
+
+		#s-1,
+		#s-2,
+		#s-3 {
+			display: none;
+		}
+
+		#sec-1:target {
+			display: block;
+			text-align: left;
+		}
+
+		#sec-2:target,
+		#sec-3:target,
+		#sec-4:target {
+			display: block;
+			float: left;
+			height: 700px;
+			width: 100%;
+			overflow: auto;
+		}
+
+		#sec-5:target {
+			display: block;
+			/* float: left; */
+			height: 700px;
+			width: 100%;
+			overflow: auto;
+		}
+
+		table {
+			overflow-y: scroll;
+		}
+
+
+		/* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
+		@media screen and (max-width: 700px) {
+			.row {
+				flex-direction: column;
+			}
+		}
+
+		/* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
+		@media screen and (max-width: 400px) {
+			.navbar a {
+				float: none;
+				width: 100%;
+			}
+		}
+	</style>
+	<body>
+		<div class="header">
+			<h1>黑帮少爷爱上我(KinnPorsche The Series)</h1>
+			<h5>泰国悬疑动作爱情剧(2022)</h5>
+			<img src="kp.jpg" width=200px>
+			<p><span style="color: white">《黑帮少爷爱上我》是由Kongkiat Khomsiri、Banchorn Vorasataree、Kritsada
+					Wittayakachondej执导，
+					帕克普泓·隆牧塞侗、纳塔温·崴唐缇派特、温查帕·苏梅提固、杰卡潘·布塔主演的悬疑动作爱情剧。
+					该剧于2022年4月2日在泰国GMM One31台首播。
+					该剧改编自Deami创作的同名小说，讲述了黑道家族二少爷Kinn遭敌人暗算，
+					逃亡中时遇见Porsche ，在他掩护下躲过了敌人追杀。
+					而Porsche为了赚钱供弟弟上大学，不甘愿地当起了Kinn的保镖。
+				</span>
+			</p>
+		</div>
+		<div class="navbar">
+			<a href="#sec-1">基本信息</a>
+			<a href="#sec-2">演职员表</a>
+			<a href="#sec-3">剧情简介</a>
+			<a href="#sec-4">剧照</a>
+			<a href="#sec-5">猜你想看</a>
+		</div>
+
+		<div class="left" style="color: white">
+			<div id="sec-1">
+				<span>
+					<h1>基本信息</h1>
+					<hr>中文名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;黑帮少爷爱上我
+					<hr>外文名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;คินน์ พอร์ช เดอะซีรีส&nbsp;/&nbsp;KinnPorsche
+					TheSeries
+					<hr>类型:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;悬疑、动作、爱情
+					<hr>制片地区:&nbsp;&nbsp;&nbsp;&nbsp;泰国
+					<hr>首播时间:&nbsp;&nbsp;&nbsp;&nbsp;2022年4月2日
+					<hr>导演:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kongkiat Khomsiri、Banchorn
+					Vorasataree、Kritsada Wittayakachondej
+					<hr>编剧:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phatchayamon
+					Thewasucharoen、Sittichai Panya、Kritsada Wittayakachondet、Panpassa Thuottien
+					<hr>主演:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;帕克普泓·隆牧塞侗、纳塔温·崴唐缇派特
+					<hr>集数:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;14 集
+					<hr>每集长度:&nbsp;&nbsp;&nbsp;&nbsp;60 分钟
+					<hr>在线播放平台:&nbsp;&nbsp;GMM One31、爱奇艺国际版
+				</span>
+			</div>
+
+			<div id="sec-2">
+				<table border="1">
+					<tr>
+						<th>演员照片</th>
+						<th>演员/饰演</th>
+						<th>演员简介</th>
+					</tr>
+					<tr>
+						<td><img src="kinn.jpg" width=200px float=left
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>帕克普泓·隆牧塞侗&nbsp;饰&nbsp;Kinn&nbsp;Theerapanyakul</td>
+
+							<td>
+
+								<p> 帕克普泓·隆牧塞侗（Mile），1992年1月5日出生于泰国曼谷，
+									毕业于泰国法政大学新闻与大众传播学院，泰国男演员、创作歌手、模特。
+									2015年，发行个人首支创作单曲《Just enough》，从而以歌手身份出道；同年，主演舞台剧《YudPop》。
+									2017年，发行创作的第二支单曲《Dream》。2018年，发行个人第三支创作单曲《Don't ask the time with a stop clock》。
+									2022年，主演的犯罪动作剧《黑帮少爷爱上我》在爱奇艺国际站播出。</p>
+
+							</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="porsche.jpg" width=200px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>纳塔温·崴唐缇派特&nbsp;饰&nbsp;Porsche</td>
+							<td>
+								<p>
+									纳塔温·崴唐缇派特（Apo），1994年2月24日出生于泰国巴蜀府华欣县，毕业于兰实大学传播艺术学院，泰国男演员、模特。
+									2014年，出演爱情剧《最爱最恨》，从而进入演艺圈。2015年，出演犯罪悬疑系列剧《龙裔黑帮》。
+									2016年，出演的动作剧《虎裔》播出；同年，主演的电视剧《大地之母》播出，并演唱个人首支主题曲《用心编织》。
+									2017年，主演的奇幻爱情剧《魔法床》播出。
+									2018年，主演的都市爱情剧《丘比特命令》和动作爱情剧《虎将》相继播出。2022年，主演的悬疑动作爱情剧《黑帮少爷爱上我》播出。
+								</p>
+							</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="vegas.jpg" width=250px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>温查帕·苏梅提固&nbsp;饰&nbsp;Vegas&nbsp;Theerapanyakul</td>
+							<td>温查帕·苏梅提固（Bible），1997年12月25日出生，就读于泰国国立法政大学工程学院，泰国男演员。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="pete.jpg" width=250px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>杰卡潘·布塔&nbsp;饰&nbsp;Pete</td>
+							<td>杰卡潘·布塔（Build），1994年6月4日出生于泰国，毕业于曼谷大学传播艺术学院 ，泰国男演员。
+								2016年，随Stick With Friends乐团发行首支单曲《Song of
+								us》，从而进入娱乐圈。2017年，参演爱情剧《復仇的受害者》。2018年，主演的都市爱情剧《粉色罪孽》播出。2019年，随组合发行第二支单曲《Just Say
+								Goodbye》。2021年，出演都市爱情剧《珠光璀璨》。2022年，主演的动作犯罪剧《黑帮少爷爱上我》播出。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="kim.jpg" width=300px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>罗一杰&nbsp;饰&nbsp;Kim</td>
+							<td>罗一杰，英文名：Jeff Satur，演员，歌手，主要作品《黑帮少爷爱上我》。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="tankul.jpg" width=300px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>塔纳育特·达功塔亚&nbsp;饰&nbsp;Tankul&nbsp;Theerapanyakul</td>
+							<td>塔纳育特·达功塔亚（Tong），1992年1月26日出生于泰国，泰国男演员，他毕业于朱拉隆功大学，获得理学学士学位和品牌与市场营销 (MBM)
+								硕士学位。2020年，出演的电视剧《与爱同居2》。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="arm.jpg" width=300px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>查缇夏索罗尔·彭皮邦&nbsp;饰&nbsp;Arm</td>
+							<td>查缇夏索罗尔·彭皮邦（Bas）,1997年4月7日出生于泰国曼谷，泰国男演员。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="ken.jpg" width=300px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>纳坤·斯克瑞艾&nbsp;饰&nbsp;Ken</td>
+							<td>纳坤·斯克瑞艾（Perth），出生于1994年7月6日，泰国和澳大利亚混血，泰国男演员。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="korn.jpg" width=300px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>松希·努诺卡空希&nbsp;饰&nbsp;Korn&nbsp;Theerapanyakul</td>
+							<td>松希·努诺卡空希（Kob），1967年5月6日出生于泰国，泰国男演员、歌手、主持人。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="gun.jpg" width=300px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>皮亚·温牟杜克塔扬&nbsp;饰&nbsp;Gun&nbsp;Theerapanyakul</td>
+							<td>皮亚·温牟杜克塔扬，演员，主要作品《黑帮少爷爱上我》。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="time.jpg" width=300px height=600px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>查拉奇·坦缇吉布&nbsp;饰&nbsp;Time</td>
+							<td>查拉奇·坦缇吉布(JJ)，泰国男演员。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="arthee.jpg" width=300px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>塔纳瓦特·斯里瓦塔纳功&nbsp;饰&nbsp;Arthee</td>
+							<td>塔纳瓦特·斯里瓦塔纳功，演员，主要作品《黑帮少爷爱上我》。</td>
+						</span>
+					</tr>
+
+					<tr>
+						<td><img src="tawan.jpg" width=300px
+								style="float: left; margin: 0 20px 0 0; height: 350px; width: 250px;"></td>
+						<span>
+							<td>纳帕·维凯伦罗&nbsp;饰&nbsp;Tawan</td>
+							<td>纳帕·维凯伦罗（Na），1994年1月3日出生于泰国，泰国男演员、模特，主要作品有《美丽男孩》。</td>
+						</span>
+					</tr>
+
+				</table>
+			</div>
+
+			<div id="sec-3">
+				<!-- <div class="navbar_in">
+					<a href="#s-1">1-5集剧情</a>
+					<a href="#s-2">6-10集剧情</a>
+					<a href="#s-3">11-14集剧情</a>
+				</div>
+
+				<div id="s-1"> -->
+				<img src="1-5.jpg">
+				<!-- </div>
+				<div id="s-2"> -->
+				<img src="6-10.jpg">
+				<!-- </div> -->
+				<!-- <div id="s-3"> --> -->
+				<img src="11-14.jpg">
+				<!-- </div> -->
+			</div>
+
+			<div id="sec-4">
+				<img class="big" src="j1.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j2.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j3.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j4.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j5.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j7.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j6.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j8.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j9.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j10.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j11.jpg" alt="" style="width: 30%;">
+				<img class="big" src="j12.jpg" alt="" style="width: 30%;">
+			</div>
+
+			<div id="sec-5" width=1024px>
+
+				<div style="display: inline-block;">
+					<a href="https://www.hanjudvd.com/11352/">
+						<img src="kp.jpg" width="200px">
+					</a>
+					<br />
+					<div style="color:white">黑帮少爷爱上我&nbsp;第一季</div>
+				</div>
+
+				<div style="display: inline-block;">
+					<a href="https://hanjudvd.com/4665/">
+						<img src="yatj.jpg" width="200px">
+					</a>
+					<br />
+					<div style="color:white">与爱同居</div>
+				</div>
+
+				<div style="display: inline-block;">
+					<a href="https://wujicloud.cn/voddetail/2102.html/">
+						<img src="yyddym.jpg" width="200px">
+					</a>
+					<br />
+					<div style="color:white">永远的第一名</div>
+				</div>
+
+				<div style="display: inline-block;">
+					<a href="https://www.libvio.me/detail/5978.html">
+						<img src="demdnx.jpg" width="200px">
+					</a>
+					<br />
+					<div style="color:white">第二名的逆袭</div>
+				</div>
+			</div>
+	</body>
+</html>
