@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SolarZheng Homework 2</title>
+	</head>
+	<style>
+		body {
+			font-family: arial;
+			width:100%;
+			margin: 0;
+			padding: 0;
+			border: 0;
+
+		}
+
+		/*网页头部*/
+		.header {
+			height: 175px;
+			padding: 70px;
+			top: 0px;
+			position: top;
+		}
+
+		/*main内容板块*/
+		#main {
+			background-image: url(bg.jpg);
+			/* z-index: -1; */
+			width: 100%;
+			height: 800px;
+			background-size: 120% 120%;
+		}
+
+		/*左侧栏，预留位置作为竖向导航栏*/
+		.leftbox {
+			width: 23%;
+			height: 600px;
+			background-color: grey;
+			opacity: 0.4;
+			float: left;
+		}
+
+
+		/*main内容板块之一*/
+		.right_in {
+			width: 35%;
+			height: 300px;
+			background-color: #2B2929;
+			opacity: 0.5;
+			float: left;
+			z-index: -1;
+		}
+
+		.right_in:hover {
+			width: 38.5%;
+			height: 300px;
+			background-color: #DF9A41;
+			opacity: 0.5;
+			float: left;
+			transform: scale(1.1);
+			transition: all 0.3s linear;
+		}
+
+		/*main内容板块之一*/
+		.right_in2 {
+			width: 35%;
+			height: 300px;
+			background-color: #2B2929;
+			opacity: 0.5;
+			float: left;
+			z-index: -1;
+		}
+
+		.right_in2:hover {
+			width: 38.5%;
+			height: 300px;
+			background-color: #971FE6;
+			opacity: 0.5;
+			float: left;
+			transform: scale(1.1);
+			transition: all 0.3s linear;
+		}
+
+		/*main内容板块之一*/
+		.left_in {
+			width: 38.5%;
+			height: 300px;
+			background-color: #2B2929;
+			opacity: 0.6;
+			float: left;
+			z-index: -1;
+		}
+
+		.left_in:hover {
+			width: 36%;
+			height: 300px;
+			background-color: #383FA8;
+			opacity: 0.8;
+			float: left;
+			transform: scale(1.1);
+			transition: all 0.3s linear;
+		}
+
+		/*main内容板块之一*/
+		.left_in2 {
+			width: 38.5%;
+			height: 300px;
+			background-color: #2B2929;
+			opacity: 0.6;
+			float: left;
+			z-index: -1;
+		}
+
+		.left_in2:hover {
+			width: 36%;
+			height: 300px;
+			background-color: #49BD45;
+			opacity: 0.8;
+			float: left;
+			transform: scale(1.1);
+			transition: all 0.3s linear;
+		}
+
+		/*导航栏*/
+		.navbar {
+			overflow: hidden;
+			background-color: black;
+			font-size: 15px;
+			opacity: 0.8;
+		}
+
+		.navbar a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			padding: 14px 20px;
+		}
+
+		.navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+
+		/*页脚编辑*/
+		.footer {
+			width: 100%;
+			height: 50px;
+			background-color: grey;
+			padding: 10px;
+		}
+
+		video {
+			top: -25%;
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			right: 0px;
+			bottom: 0px;
+			z-index: -99;
+			margin: 0px 0px 0px 0px;
+		}
+
+		/*响应式布局*/
+		@media screen and (max-width: 700px) {
+			.row {
+				flex-direction: column;
+			}
+		}
+
+		@media screen and (max-width: 800px) {
+			.navbar a {
+				float: none;
+				width: 100%;
+			}
+
+		}
+	</style>
+	<body>
+		<div class="header">
+			<video autoplay="autoplay" loop="loop" controls autoplay muted style="width:100% height:300px">
+				<source src="live.mp4" type="video/mp4">
+				<!-- </source> -->
+			</video>
+			<h1 style="text-align:center;color:white;font-size:70px">SolarMusic</h1>
+			<h6 style="text-align:center;color:white;font-size:20px">Music your soul.</h6>
+		</div>
+		<div class="navbar">
+			<a href="#">回到首页Back to main page</a>
+			<a href="#" title="点我没用">流行Pop</a>
+			<a href="#" title="点我没用">独立Indie</a>
+			<a href="#" title="点我没用">摇滚Rock</a>
+			<a href="#" title="点我没用">说唱Hip-Hop</a>
+			<a href="#" title="点我没用">电子Electronic</a>
+			<a href="#" title="点我没用">民谣Folk</a>
+			<a href="#" title="点我没用">朋克Punk</a>
+			<a href="#" title="点我没用">轻音乐Light&nbsp;Music</a>
+			<a href="#" title="点我没用">世界音乐World&nbsp;Music</a>
+			<a href="#" title="点我没用">节奏布鲁斯R&B</a>
+			<a href="#" title="点我没用">雷鬼Reggae</a>
+			<a href="#" title="虽然我很想在这一栏写点什么但是我什么都没写">金属Metal</a>
+			<a href="#" title="虽然我很想在这一栏写点什么但是我什么都没写">极端金属Extreme&nbsp;Metal</a>
+			<a href="#" title="虽然我很想在这一栏写点什么但是我什么都没写">核Core</a>
+
+		</div>
+		<div id="main">
+			<div class="leftbox">
+				<div class="navbar" style="width:100%">
+					<!-- <li class=""><a href="#">关于我们</a></li>
+					<li class=""><a href="#">客户端下载</a></li> -->
+					<table>
+						<tr>
+							<td title="点我没用"><a href="#">现在就听&nbsp;Listen&nbsp;now</a></td>
+						</tr>
+						<tr>
+							<td title="点我没用"><a href="#">随便逛逛&nbsp;Look&nbsp;around</a></td>
+						</tr>
+						<tr>
+							<td title="点我没用"><a href="#">近期演出&nbsp;Recent&nbsp;music&nbsp;live</a></td>
+						</tr>
+						<tr>
+							<td title="点我没用"><a href="#">客户端下载&nbsp;Client&nbsp;download</a></td>
+						</tr>
+						<tr>
+							<td title="点我没用"><a href="#">音乐人中心&nbsp;Musician&nbsp;Center</a></td>
+						</tr>
+						<tr>
+							<td title="点我没用"><a href="#">成为会员&nbsp;Become&nbsp;our&nbsp;member</a></td>
+						</tr>
+						<tr>
+							<td title="点我没用"><a href="#">意见反馈&nbsp;Feedback</a></td>
+						</tr>
+						<tr>
+							<td title="点我大大的有用"><a
+									href="https://blog.csdn.net/Solar_Zheng0817?spm=1000.2115.3001.5343">关于作者&nbsp;About&nbsp;me</a>
+							</td>
+						</tr>
+						<tr>
+							<td title="点我有用~快点我"><a href="code.html">源码展示与描述&nbsp;Show&nbsp;my&nbsp;code</a></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+
+			<div class="right">
+				<div class="right_in">
+					<h1>&nbsp;</h1>
+					<h3>&nbsp;</h3>
+					<h1 style="text-align:center;color:white">本周热门></h1>
+					<h3 style="text-align:center;color:white">一切精彩尽在SolarMusic!</h3>
+				</div>
+				<div class="left_in">
+					<h1>&nbsp;</h1>
+					<h3>&nbsp;</h3>
+					<h1 style="text-align:center;color:white">本周音乐时讯></h1>
+					<h3 style="text-align:center;color:white">这些内容不容错过！</h3>
+				</div>
+				<div class="left_in2">
+					<h1>&nbsp;</h1>
+					<h3>&nbsp;</h3>
+					<h1 style="text-align:center;color:white">歌单精选></h1>
+					<h3 style="text-align:center;color:white">你的品味，我们懂。</h3>
+				</div>
+				<div class="right_in2">
+					<h1>&nbsp;</h1>
+					<h3>&nbsp;</h3>
+					<h1 style="text-align:center;color:white">新碟上架></h1>
+					<h3 style="text-align:center;color:white">快来Check&nbsp;out!</h3>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<p style="color:white;text-align:center;font-size:10px">关于更多请联系作者：solarzheng0817@gmail.com</p>
+			<p style="color:white;text-align:center;font-size:10px">网站解释权、版权归SolarZheng所有</p>
+		</div>
+	</body>
+</html>

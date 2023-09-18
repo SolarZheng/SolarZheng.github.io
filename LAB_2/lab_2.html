@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Chap2 Demo Sierpinski Gasket </title>
+
+		<script id="vertex-shader-2d" type="x-shader/x-vertex">
+			attribute vec4 vPosition;
+		void main(){
+			gl_Position = vPosition;
+		}
+		</script>
+
+		<script id="fragment-shader-2d" type="x-shader/x-fragment">
+			precision mediump float;
+		void main(){
+			gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );
+		}
+		</script>
+
+		<script id="vertex-shader-3d" type="x-shader/x-vertex">
+			attribute vec3 vPosition;
+			attribute vec3 vColor;
+			varying vec4 color;
+		
+			void main(){
+				gl_Position = vec4( vPosition, 1.0 );
+				color = vec4( vColor, 1.0 );
+			}
+		</script>
+
+		<script id="fragment-shader-3d" type="x-shader/x-fragment">
+			precision mediump float;
+			varying vec4 color;
+			void main(){
+				gl_FragColor = color;
+			}
+		</script>
+
+		<script id="vertex-shader-wire" type="x-shader/x-vertex">
+			attribute vec4 vPosition;
+			void main(){
+				gl_Position = vPosition;
+			}
+		</script>
+
+		<script id="fragment-shader-wire" type="x-shader/x-fragment">
+			precision mediump float;
+			void main(){
+				gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );
+			}
+		</script>
+
+		<script type="text/javascript" src="webgl-utils.js"></script>
+		<script type="text/javascript" src="initShaders.js"></script>
+		<script type="text/javascript" src="gl-matrix-min.js"></script>
+
+		<script type="text/javascript" src="gasket-2d.js"></script>
+		<script type="text/javascript" src="gasket-3d.js"></script>
+		<script type="text/javascript" src="gasket-wire.js"></script>
+	</head>
+
+	<body>
+		<div text-align="right">
+			<h5>---任务栏---</h5>
+			<h5>a.绘制二维效果的Sierpinski Gasket，输入剖分的层次(0-7)，绘制对应图案。</h5>
+			<h5>b.绘制三维效果的Sierpinski Gasket,输入剖分的层次(0-7)，绘制对应图案。</h5>
+			<h5>c.完成不同层次剖分效果的绘制，这里的绘制采用线框模式</h5>
+			<h5>d.c中剖分后的三角形添加旋转效果。</h5>
+			<h5>e. 在任务d中，如果旋转角度根据点到原点的距离$d$设定</h5>
+
+			<h5>---操作栏---</h5>
+			<h5>step1：形状选择(注意：选择新形状前先点击清空)
+				<input type="button" id="2D" value="2D" onclick="initTriangles2D()">
+				<input type="button" id="3D" value="3D" onclick="initTriangles3D()">
+				<input type="button" id="Wire" value="Wire" onclick="initTrianglesWire()">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="button" value="清空" onclick="refreshPage()">
+			</h5>
+			<h5>step2：拖动滑动条进行层次调节（0-7）：<input type="range" id="slider_1" min="0" max="7" value="4"></h5>
+			<h5>step3: 普通旋转（0-360°,仅对wire有效）：<input type="range" id="slider_2" min="0" max="360" value="0"></h5>
+			<h5>step4: 特殊旋转（0-360°,如果旋转角度根据点到原点的距离d设定，仅对wire有效）：<input type="range" id="slider_3" min="0" max="360"
+					value="0"></h5>
+			<h6>（注意：普通旋转与特殊旋转不可叠加。）</h6>
+		</div>
+		<canvas id="gl-canvas" width="512" height="512">你的浏览器不支持HTML5 canvas元素</canvas>
+	</body>
+
+</html>
