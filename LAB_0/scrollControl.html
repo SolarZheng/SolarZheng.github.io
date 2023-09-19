@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SolarZheng's Five-Pointed Star</title>
+		<style>
+			body {
+				margin: 0;
+			}
+
+			canvas {
+				display: block;
+			}
+
+			div {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="starCanvas" width="400" height="400">
+		</canvas>
+
+		<h5>首先，该五角星共有十个顶点。</h5>
+		<h5>其中5个在大圆上（其半径记作R，初始长度为0.5），其中5个在小圆上（其半径记作r，初始长度为0.2）</h5>
+		<p>左滑动条可调节大圆半径R，右滑动条可调节调节小圆半径r。</p>
+
+		<input type="range" id="sliderR" min="0.01" max="1.0" step="0.01" value="0.5">
+		<input type="range" id="sliderr" min="0.01" max="1.0" step="0.01" value="0.2">
+		<button type="button" onClick="refreshPage()">重置</button>
+
+		<script type="text/javascript" src="webgl-utils.js"></script>
+		<script type="text/javascript" src="initShaders.js"></script>
+
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec2 a_position;
+        void main() {
+            gl_Position = vec4(a_position, 0.0, 1.0);
+        }
+		</script>
+
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+        void main() {
+            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); // Red color
+        }
+		</script>
+
+		<script type="text/javascript">
+			function refreshPage() {
+				window.location.reload();
+			}
+			var canvas = document.getElementById("starCanvas");
+			var gl = WebGLUtils.setupWebGL(canvas);
+
+			if (!gl) {
+				alert("WebGL initialization failed. Your browser may not support it.");
+			}
+
+			var vertexShaderSource = document.getElementById("vertex-shader").text;
+			var fragmentShaderSource = document.getElementById("fragment-shader").text;
+
+			// 初始化着色器程序
+			var shaderProgram = initShaders(gl, "vertex-shader", "fragment-shader");
+
+			if (!shaderProgram) {
+				alert("Shader program initialization failed.");
+			}
+
+			gl.useProgram(shaderProgram);
+
+			// 定义五角星的顶点坐标
+			var r = 0.2;
+			var R = 0.5;
+			var PI = 3.1415926536;
+			var ang1 = 18 * PI / 180,
+				ang2 = 54 * PI / 180;
+
+			var sliderR = document.getElementById("sliderR");
+			var sliderr = document.getElementById("sliderr");
+
+			sliderR.addEventListener("input", updateStar);
+			sliderr.addEventListener("input", updateStar);
+
+			function updateStar() {
+				R = parseFloat(sliderR.value);
+				r = parseFloat(sliderr.value);
+
+				var vertices = [
+					0, R,
+					r * Math.cos(ang2), r * Math.sin(ang2),
+					R * Math.cos(ang1), R * Math.sin(ang1),
+					r * Math.cos(ang1), -r * Math.sin(ang1),
+					R * Math.cos(ang2), -R * Math.sin(ang2),
+					0, -r,
+					-R * Math.cos(ang2), -R * Math.sin(ang2),
+					-r * Math.cos(ang1), -r * Math.sin(ang1),
+					-R * Math.cos(ang1), R * Math.sin(ang1),
+					-r * Math.cos(ang2), r * Math.sin(ang2),
+				];
+
+				var vertexBuffer = gl.createBuffer();
+				gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+				gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+
+				var positionLocation = gl.getAttribLocation(shaderProgram, "a_position");
+				gl.enableVertexAttribArray(positionLocation);
+				gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+				gl.viewport(0, 0, canvas.width, canvas.height);
+				gl.clearColor(1.0, 1.0, 1.0, 1.0);
+				gl.clear(gl.COLOR_BUFFER_BIT);
+
+				gl.drawArrays(gl.LINE_LOOP, 0, 10);
+			}
+
+			updateStar(); // 初始化星形
+		</script>
+	</body>
+</html>
