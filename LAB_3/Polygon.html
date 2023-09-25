@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SolarZheng's Polygon</title>
+		<style>
+			body {
+				margin: 0;
+			}
+
+			canvas {
+				display: block;
+			}
+
+			div {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="PCanvas" width="400" height="400">
+		</canvas>
+		<h4>拖动滑动条改变多边形边的数量</h4>
+		<input type="range" id="slider" min="3" max="50" step="1" value="3">
+
+
+		<h4>拖动滑动条改变多边形初始旋转速度</h4>
+		<input type="range" id="slider_" min="1" max="100" value="20">
+
+		<br>
+		<button type="button" onclick="refreshPage()">重置</button>
+
+		<script type="text/javascript" src="webgl-utils.js"></script>
+		<script type="text/javascript" src="initShaders.js"></script>
+
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec2 a_position;
+			uniform float u_angle;
+
+			void main() {
+				mat2 rotation = mat2(cos(u_angle), -sin(u_angle), sin(u_angle), cos(u_angle));
+				gl_Position = vec4(rotation * a_position, 0.0, 1.0);
+			}
+		</script>
+
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+			void main() {
+				gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); // Red color
+			}
+		</script>
+
+		<script type="text/javascript">
+			function refreshPage() {
+				window.location.reload();
+			}
+
+			var canvas = document.getElementById("PCanvas");
+			var gl = WebGLUtils.setupWebGL(canvas);
+
+			if (!gl) {
+				alert("WebGL initialization failed. Your browser may not support it.");
+			}
+
+			var vertexShaderSource = document.getElementById("vertex-shader").text;
+			var fragmentShaderSource = document.getElementById("fragment-shader").text;
+
+			// 初始化着色器程序
+			var shaderProgram = initShaders(gl, "vertex-shader", "fragment-shader");
+
+			if (!shaderProgram) {
+				alert("Shader program initialization failed.");
+			}
+
+			gl.useProgram(shaderProgram);
+
+			var bian = 6;
+			var R = 0.5;
+
+			var slider = document.getElementById("slider");
+			var slider_ = document.getElementById("slider_");
+
+			slider.addEventListener("input", update);
+			slider_.addEventListener("input", update);
+
+			var bian = parseFloat(slider.value);
+			var angle = 0;
+			// var angle = parseFloat(slider_.value);
+
+			var delay = 500;
+
+			var angleLocation = gl.getUniformLocation(shaderProgram, "u_angle");
+
+			function update() {
+				bian = parseFloat(slider.value);
+
+				var vertices = [];
+
+				for (var i = 0; i < bian; i++) {
+					vertices.push(R * Math.cos(2 * Math.PI / bian * i)); //x
+					vertices.push(R * Math.sin(2 * Math.PI / bian * i)); //y 
+					//x与y必须成对出现！注意vertices顶点数组的存储方式
+				}
+
+				var vertexBuffer = gl.createBuffer();
+				gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+				gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
+
+				var positionLocation = gl.getAttribLocation(shaderProgram, "a_position");
+				gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+				gl.enableVertexAttribArray(positionLocation);
+
+				gl.viewport(0, 0, canvas.width, canvas.height);
+				gl.clearColor(1.0, 1.0, 1.0, 1.0);
+
+				slider_.onchange = function() {
+					delay = 1000 / slider_.value;
+				}
+			}
+
+			function render() {
+				gl.clear(gl.COLOR_BUFFER_BIT);
+
+				// 更新旋转角度
+				angle += 0.1;
+				if (angle > 2 * Math.PI)
+					angle -= (2 * Math.PI);
+
+				gl.uniform1f(angleLocation, angle);
+
+				gl.drawArrays(gl.TRIANGLE_FAN, 0, bian);
+
+				//requestAnimationFrame(render);
+				setTimeout(function() {
+					requestAnimFrame(render);
+				}, delay);
+			}
+
+			update();
+			
+			render();
+		</script>
+	</body>
+</html>

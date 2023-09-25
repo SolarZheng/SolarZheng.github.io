@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>sticks man</title>
+		<style>
+			body {
+				margin: 0;
+			}
+
+			canvas {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>题目：苯人精神状态</h1>
+		<p><button onclick="initMan()">点击此处生成一个精神状态稳定的走路小人</button></p>
+		<p><button onclick="headbang()">点击此处脑瓜子离家出走（再点一次脑瓜子回家，对准了身体点）</button></p>
+		<p><button onclick="refreshPage()">脑瓜子或者人回不来了点击此处重开</button></p>
+		<p>拖动滑动条改变小人行进速度</p>
+		<input type="range" id="slider" min="0" max="100" value="0">
+
+		<canvas id="manCanvas" width="200" height="200"></canvas>
+
+		<script type="text/javascript" src="webgl-utils.js"></script>
+		<script type="text/javascript" src="initShaders.js"></script>
+
+		<script type="text/javascript" src="LAB_3.js"></script>
+
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec2 a_position;
+        void main() {
+            gl_Position = vec4(a_position, 0.0, 1.0);
+        }
+    </script>
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+        void main() {
+            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0); // Red color
+        }
+    </script>
+	</body>
+</html>
