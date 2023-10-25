@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<title>LAB_5</title>
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec4 vPosition;
+			attribute vec4 vColor;
+			varying vec4 fColor;
+		
+			uniform mat4 modelViewMatrix;
+			uniform mat4 projectionMatrix;
+			uniform vec3 zoom;
+		
+			void main()
+			{
+				mat4 Zoom = mat4(1.0+zoom[0], 0.0, 0.0, 0.0,
+								 0.0, 1.0+zoom[1], 0.0, 0.0,
+								 0.0, 0.0, 1.0+zoom[2], 0.0,
+								 0.0, 0.0, 0.0, 1.0);
+				
+				gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+				gl_Position = Zoom * gl_Position;
+				fColor = vColor;	
+			}
+		</script>
+		
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+		
+			varying vec4 fColor;
+		
+			void main()
+			{
+				gl_FragColor = fColor;
+			}
+		</script>
+		
+		<script type="text/javascript" src="webgl-utils.js"></script>
+		<script type="text/javascript" src="initShaders.js"></script>
+		<script type="text/javascript" src="gl-matrix-min.js"></script>
+		<script type="text/javascript" src="objloader.js"></script>
+		<script type="text/javascript" src="objview.js"></script>
+	</head>
+	<body>
+		<h1>实验五</h1>
+		<div>
+			<canvas id="gl-canvas" width="800" height="600" style="float: right;margin-right: 10px;">
+				你的浏览器不支持HTML5 Canvas元素
+			</canvas>
+		</div>
+		<div style="border:5px red">
+			<label>选择一个OBJ模型文件</label>
+			<input type="file" id="fileInput"><pre id="fileDisplay"></pre>
+		</div>
+		<div>
+			<label>选择投影方式 : </label>
+			<input type="radio" id="ortho" name="projtype" value="1" checked><label>正交投影</label>
+			&nbsp;
+			<input type="radio" id="persp" name="projtype" value="2"><label>透视投影</label>
+			<!-- <label id="projtyperes"></label> -->
+		</div>
+		<div>
+			<label>选择绘制方式 : </label>
+			<input type="radio" id="wire" name="drawtype" value="1" checked><label>线框模式</label>
+			&nbsp;
+			<input type="radio" id="solid" name="drawtype" value="2" ><label>实体模式</label><br />
+			<label>颜色选择 : </label>
+			<input type="color" id="objcolor" name="objcolor" value="#ff0000">
+		</div>
+		
+		<div>
+			<label>改变对象位置 : </label><input type="radio" id="objpos" name="posgrp" value="1" checked><label>物体位置</label>
+			&nbsp;
+			<input type="radio" id="campos" name="posgrp" value="2"><label>相机位置</label>
+			<!-- <label id="projtyperes"></label> -->
+			<br>
+			<h3>平移、旋转、缩放</h3>
+			<table border="0">
+				<tr>
+					<td colspan="2"><label>重置按钮 : </label><button onclick="refreshPage()">reset</button><br /></td>
+				</tr>
+				<tr><td colspan="2"><hr size="4" color="#2FA0EC" style="border: outset;"></td></tr>
+				<tr>
+					<td><label>x平移(按“A/D”键控制)</label></td>
+					<td><input type="range" id="xpos" name="xpos" min="-5.0" max="5.0" step="0.1"></td>
+				</tr>
+				<tr>
+					<td><label>y平移(按“W/S”键控制)</label></td>
+					<td><input type="range" id="ypos" name="ypos" min="-5.0" max="5.0" step="0.1"></td>
+				</tr>
+				<tr>
+					<td><label>z平移(按“Z/X”键控制)</label></td>
+					<td><input type="range" id="zpos" name="zpos" min="-5.0" max="5.0" step="0.1"></td>
+				</tr>
+				<tr><td colspan="2"><hr size="4" color="#2FA0EC" style="border: outset;"></td></tr>
+				<tr>
+					<td><label>x旋转(按“H/K”键控制)</label></td>
+					<td><input type="range" id="xrot" name="xrot" min="-360" max="360" step="1.0"></td>
+				</tr>
+				<tr>
+					<td><label>y旋转(按“U/J”键控制)</label></td>
+					<td><input type="range" id="yrot" name="yrot" min="-360" max="360" step="1.0"></td>
+				</tr>
+				<tr>
+					<td><label>z旋转(按“N/M”键控制)</label></td>
+					<td><input type="range" id="zrot" name="zrot" min="-360" max="360" step="1.0"></td>
+				</tr>
+				<tr><td colspan="2"><hr size="4" color="#2FA0EC" style="border: outset;"></td></tr>
+				<tr>
+					<td><label>x缩放(按"←/→"键控制)</label></td>
+					<td><input type="range" id="xzoom" name="xzoom" min="-1" max="2" step="0.1"></td>
+				</tr>
+				<tr>
+					<td><label>y缩放(按"↑/↓"键控制)</label></td>
+					<td><input type="range" id="yzoom" name="yzoom" min="-1" max="2" step="0.1"></td>
+				</tr>
+				<tr>
+					<td><label>z缩放(按",/."键控制)</label></td>
+					<td><input type="range" id="zzoom" name="zzoom" min="-1" max="2" step="0.1"></td>
+				</tr>
+				<tr><td colspan="2"><hr size="4" color="#2FA0EC" style="border: outset;"></td></tr>
+			</table>
+		</div>
+	</body>
+</html>
